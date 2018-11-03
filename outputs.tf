@@ -22,10 +22,6 @@ output "s3_versioning" {
   value = "${aws_s3_bucket.this.versioning}"
 }
 
-output "s3_tags" {
-  value = "${aws_s3_bucket.this.tags}"
-}
-
 output "aws_kms_key_arn" {
   value = "${aws_kms_key.this.arn}"
 }
