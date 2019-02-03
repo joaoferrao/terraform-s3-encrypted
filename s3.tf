@@ -3,7 +3,7 @@
 ################################################################################
 
 module "DATENN_VAR_bucketName_encrypted_bucket" {
-  source                             = "DATENN_VAR_local_source"
+  source                             = "DATENN_VAR_module_dir"
 
   region                             = "${var.bucket_DATENN_VAR_bucketName_region}"
   s3_bucket_name                     = "DATENN_VAR_bucketName"
