@@ -1,76 +1,89 @@
-################################################################################
-# S3 Bucket "DATENN_VAR_bucketName" variables
-################################################################################
-variable "bucket_DATENN_VAR_bucketName_region" {
-  description = "AWS Region for S3 Bucket DATENN_VAR_bucketName"
+variable "region" {
+  description = "Default Region for Cloud Analytics Platform"
   default     = "eu-west-1"
 }
 
-variable "bucket_DATENN_VAR_bucketName_deletion_window_in_days" {
+variable "s3_bucket_name" {
+  description = "Name of the bucket"
+}
+
+variable "s3_bucket_acl" {
+  description = "Private or Public"
+  default     = "private"
+}
+
+variable "allow_terraform_destroy" {
+  description = "Whether to allow terraform to destroy the bucket if someone runs a 'terraform destroy' command"
+  default     = false
+}
+
+variable "deletion_window_in_days" {
   description = "Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 10 days."
   default     = 10
 }
 
-variable "bucket_DATENN_VAR_bucketName_versioning_enabled" {
+variable "kms_key_alias" {
+  description = "KMS key alias"
+}
+
+variable "versioning_enabled" {
   default = false
 }
 
-variable "bucket_DATENN_VAR_bucketName_transition_lifecycle_rule_enabled" {
+variable "transition_lifecycle_rule_enabled" {
   default = false
 }
 
-variable "bucket_DATENN_VAR_bucketName_expiration_lifecycle_rule_enabled" {
+variable "transition_lifecycle_rule_prefix" {
+  default = ""
+}
+
+variable "expiration_lifecycle_rule_enabled" {
   default = false
 }
 
-variable "bucket_DATENN_VAR_bucketName_expiration_lifecycle_rule_prefix" {
-  description = "(Optional) expiration lifecycle rule, only valid if enabled"
-  default     = ""
+variable "expiration_lifecycle_rule_prefix" {
+  default = ""
 }
 
-variable "bucket_DATENN_VAR_bucketName_transition_lifecycle_rule_prefix" {
-  description = "(Optional) transition lifecycle rule, only valid if enabled"
-  default     = ""
-}
-
-variable "bucket_DATENN_VAR_bucketName_noncurrent_version_transition_days" {
+variable "noncurrent_version_transition_days" {
   description = "(Optional) Specifies when noncurrent object versions transitions"
   default     = "30"
 }
 
-variable "bucket_DATENN_VAR_bucketName_standard_transition_days" {
+variable "standard_transition_days" {
   description = "Number of days to persist in the standard storage tier before moving to the infrequent access tier"
   default     = "30"
 }
 
-variable "bucket_DATENN_VAR_bucketName_glacier_transition_days" {
+variable "glacier_transition_days" {
   description = "Number of days after which to move the data to the glacier storage tier"
   default     = "60"
 }
 
-variable "bucket_DATENN_VAR_bucketName_expiration_days" {
+variable "expiration_days" {
   description = "Number of days after which to expunge the objects"
   default     = "90"
 }
 
-variable "bucket_DATENN_VAR_bucketName_noncurrent_version_expiration_days" {
+variable "noncurrent_version_expiration_days" {
   description = "(Optional) Specifies when noncurrent object versions expire."
   default     = "90"
 }
 
-variable "bucket_DATENN_VAR_bucketName_tags" {
+variable "bucket_tags" {
   type        = "map"
   default     = {}
-  description = "Additional tags (e.g. map('Environment','prd', 'Project', 'geo-analytics')"
+  description = "Additional tags (e.g. map('Environment`,`prd`, `Project`, `geo-analytics`)"
 }
 
-variable "bucket_DATENN_VAR_bucketName_kms_key_tags" {
+variable "kms_key_tags" {
   type        = "map"
   default     = {}
-  description = "Additional tags (e.g. map('Environment','prd', 'Project', 'geo-analytics')"
+  description = "Additional tags (e.g. map('Environment`,`prd`, `Project`, `geo-analytics`)"
 }
 
-variable "bucket_DATENN_VAR_bucketName_kms_key_description" {
+variable "kms_key_description" {
   description = "KMS key description"
-  default     = "This key is used to encrypt bucket objects"
+  default = "This key is used to encrypt bucket objects"
 }
